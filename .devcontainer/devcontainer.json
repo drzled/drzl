@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+	"name": "Alpine Docker in Docker",
+	"image": "ghcr.io/jorgecar/codespace:main",
+	"runArgs": [
+		"--init",
+		"--privileged"
+	],
+	"mounts": [
+		"source=dind-var-lib-docker,target=/var/lib/docker,type=volume"
+	],
+	"overrideCommand": false,
+	"customizations": {
+		"vscode": {
+			// Set *default* container specific settings.json values on container create.
+			"settings": {
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"codingyu.laravel-goto-view",
+				"amiralizadeh9480.laravel-extra-intellisense",
+				"shufo.vscode-blade-formatter",
+				"EditorConfig.EditorConfig",
+				"mikestead.dotenv",
+				"naoray.laravel-goto-components",
+				"glitchbl.laravel-create-view",
+				"IHunte.laravel-blade-wrapper",
+				"cjhowe7.laravel-blade",
+				"austenc.laravel-blade-spacer",
+				"mohamedbenhida.laravel-intellisense",
+				"georgykurian.laravel-ide-helper",
+				"bmewburn.vscode-intelephense-client",
+				"MehediDracula.php-namespace-resolver",
+				"ms-vscode.makefile-tools",
+				"github.vscode-github-actions"
+			]
+		}
+	},
+	"remoteUser": "vscode"
+}
