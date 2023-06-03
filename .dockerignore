@@ -1,0 +1,8 @@
+/vendor/
+.env
+.phpunit.result.cache
+.devcontainer/
+./docker
+.git
+.dockerignore
+Makefile
