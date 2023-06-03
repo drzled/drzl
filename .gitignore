@@ -1,0 +1,8 @@
+vendor
+composer.lock
+phpunit.xml
+.env
+builds
+storage/logs
+*.phar
+.drzl
