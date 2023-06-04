@@ -20,15 +20,37 @@ final class InitCommand extends Command
 
     public function handle(): int
     {
-        $manifestWasCreated = $this->manifest->update(Manifest::default());
+        $this->ensureManifestDoesntExist();
 
-        if (! $manifestWasCreated) {
-            $this->error('Error: Unable to generate manifest file.');
-            $this->line('Please check the file permissions and try again.');
-            $this->line('File location: ' . $this->manifest->path());    
-            return self::FAILURE;
+        if ($this->manifest->create()) {
+            return $this->reportSuccess();
         }
+
+        return $this->reportFailure();
+    }
+
+    protected function ensureManifestDoesntExist()
+    {
+        if ($this->manifest->exists()) {
+            $this->error('Error: The manifest already exists.');
+            $this->line('Please delete the file if you want to generate it again.');
+            $this->line('File location: ' . $this->manifest->path());
+            
+            exit(self::INVALID);
+        }
+    }
+
+    protected function reportFailure(): int
+    {
+        $this->error('Error: Unable to generate manifest file.');
+        $this->line('Please check the file permissions and try again.');
+        $this->line('File location: ' . $this->manifest->path());
         
+        return self::FAILURE;
+    }
+
+    protected function reportSuccess(): int
+    {
         $this->info('Manifest file generated successfully.');
         $this->line('Please update the manifest file with your deployment configuration.');
         $this->line('File location: ' . $this->manifest->path());
