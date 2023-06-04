@@ -17,9 +17,4 @@ abstract class TestCase extends BaseTestCase
 
         $this->app->bind(Filesystem::class, fn() => Storage::fake());
      }
-
-     protected function tearDown(): void
-    {
-        parent::tearDown();
-    }
 }
