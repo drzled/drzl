@@ -26,7 +26,6 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\": "vendor/orchestra/testbench-core/laravel/app",
             "Tests\\": "tests/"
         }
     },
@@ -40,7 +39,6 @@
         "laravel/pint": "^1.10",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/phpinsights": "^2.8",
-        "orchestra/testbench": "^7.0|^8.0",
         "pestphp/pest": "^2.6",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan": "^1.10"
@@ -55,9 +53,6 @@
     },
     "extra": {
         "laravel": {
-            "providers": [
-                "Drzl\\DrzlServiceProvider"
-            ],
             "aliases": {
                 "Drzl": "Drzled\\Drzl"
             }
