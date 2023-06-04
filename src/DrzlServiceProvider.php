@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drzl;
 
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 
 class DrzlServiceProvider extends ServiceProvider
@@ -12,8 +13,10 @@ class DrzlServiceProvider extends ServiceProvider
     {
          $this->app->singleton(
             Manifiest::class, 
-            fn ($app) => $app->make(Manifiest::class)
+            fn ($app) => new Manifest($app->make(Filesystem::class))
         );
+
+        $this->app->bind('manifest', Manifest::class);
     }
 
     public function boot(): void
