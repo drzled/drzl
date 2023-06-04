@@ -11,9 +11,9 @@
 |
 */
 
-$app = new LaravelZero\Framework\Application(
+$app = (new LaravelZero\Framework\Application(
     dirname(__DIR__)
-);
+))->useAppPath(dirname(__DIR__).'/src');
 
 /*
 |--------------------------------------------------------------------------
