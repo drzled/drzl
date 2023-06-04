@@ -22,7 +22,7 @@ final class InitCommand extends Command
     {
         $this->ensureManifestDoesntExist();
 
-        if ($this->manifest->create()) {
+        if ($this->manifest->created()) {
             return $this->reportSuccess();
         }
 

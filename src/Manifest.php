@@ -30,7 +30,7 @@ final class Manifest {
         return $this->storage->put($this->filename, Yaml::dump($values));
     }
 
-    public function create(): bool
+    public function created(): bool
     {
         return $this->update($this->default());
     }
