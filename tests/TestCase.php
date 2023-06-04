@@ -22,13 +22,4 @@ abstract class TestCase extends BaseTestCase
     {
         parent::tearDown();
     }
-
-    protected function getPackageProviders($app)
-    {
-        $serviceProviders = [
-            DrzlServiceProvider::class,
-        ];
-
-        return $serviceProviders;
-    }
 }
