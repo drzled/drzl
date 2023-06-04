@@ -1,20 +1,6 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Command
-    |--------------------------------------------------------------------------
-    |
-    | Laravel Zero will always run the command specified below when no command name is
-    | provided. Consider update the default command for single command applications.
-    | You cannot pass arguments to the default command because they are ignored.
-    |
-    */
-
-    'default' => NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
-
     /*
     |--------------------------------------------------------------------------
     | Commands Paths
