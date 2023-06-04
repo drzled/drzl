@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Drzl\DrzlServiceProvider;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 use LaravelZero\Framework\Testing\TestCase as BaseTestCase;
