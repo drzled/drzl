@@ -18,6 +18,8 @@ RUN docker-php-ext-install -j$(nproc) zip bcmath pcntl opcache
 
 # Final build, "app", the base for others
 FROM php:8.2-cli-alpine as app
+RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories
+RUN apk --no-cache add shadow && usermod -u 1000 www-data
 RUN apk update && \
     apk add --no-cache \
     docker \
