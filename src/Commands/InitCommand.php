@@ -22,11 +22,10 @@ final class InitCommand extends Command
     {
         $this->ensureManifestDoesntExist();
 
-        if ($this->manifest->created()) {
-            return $this->reportSuccess();
-        }
-
-        return $this->reportFailure();
+        return match($this->manifest->created()) {
+            true => $this->reportSuccess(),
+            false => $this->reportFailure(),
+        };
     }
 
     protected function ensureManifestDoesntExist()
