@@ -30,6 +30,11 @@ final class Manifest {
         return $this->storage->put($this->filename, Yaml::dump($values));
     }
 
+    public function create(): bool
+    {
+        return $this->update($this->default());
+    }
+
     public function values(): Collection
     {
         return collect($this->values);
@@ -40,7 +45,12 @@ final class Manifest {
         return $this->storage->path($this->filename);
     }
 
-    public static function default(): array
+    public function exists(): bool
+    {
+        return $this->storage->exists($this->filename);
+    }
+
+    public function default(): array
     {
         return [
             'name' => config('app.name'),
