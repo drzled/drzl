@@ -30,21 +30,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Added Commands
-    |--------------------------------------------------------------------------
-    |
-    | You may want to include a single command class without having to load an
-    | entire folder. Here you can specify which commands should be added to
-    | your list of commands. The console's kernel will try to load them.
-    |
-    */
-
-    'add' => [
-        // ..
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Hidden Commands
     |--------------------------------------------------------------------------
     |
