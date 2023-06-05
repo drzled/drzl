@@ -10,7 +10,7 @@ use Symfony\Component\Yaml\Yaml;
 
 final class Manifest {
 
-    protected readonly string $filename;
+    public readonly string $filename;
 
     protected array $values;
 
