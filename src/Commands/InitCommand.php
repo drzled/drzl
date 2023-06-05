@@ -20,38 +20,25 @@ final class InitCommand extends Command
 
     public function handle(): int
     {
-        $this->ensureManifestDoesntExist();
-
-        return match($this->manifest->created()) {
-            true => $this->reportSuccess(),
-            false => $this->reportFailure(),
+        return match (true) {
+            $this->manifest->exists() => $this->reportError('Delete the manifest to generate it again.', self::INVALID),
+            $this->manifest->created() => $this->reportSuccess('Manifest file generated successfully.'),
+            default => $this->reportError('Unable to generate manifest file. Check the folder permissions.', self::FAILURE),
         };
     }
 
-    protected function ensureManifestDoesntExist()
+    protected function reportError(string $message, int $statusCode): int
     {
-        if ($this->manifest->exists()) {
-            $this->error('Error: The manifest already exists.');
-            $this->line('Please delete the file if you want to generate it again.');
-            $this->line('File location: ' . $this->manifest->path());
-            
-            exit(self::INVALID);
-        }
-    }
-
-    protected function reportFailure(): int
-    {
-        $this->error('Error: Unable to generate manifest file.');
-        $this->line('Please check the file permissions and try again.');
+        $this->error('Error: ' . $message);
         $this->line('File location: ' . $this->manifest->path());
         
-        return self::FAILURE;
+        return $statusCode;
     }
 
-    protected function reportSuccess(): int
+    protected function reportSuccess(string $message): int
     {
-        $this->info('Manifest file generated successfully.');
-        $this->line('Please update the manifest file with your deployment configuration.');
+        $this->info($message);
+        $this->line('Update the manifest file with your deployment configuration.');
         $this->line('File location: ' . $this->manifest->path());
         
         return self::SUCCESS;
