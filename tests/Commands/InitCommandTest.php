@@ -17,3 +17,11 @@ it('ensures the user is prompted to update the file', function () {
           ->expectsOutputToContain('Update the manifest file with your deployment configuration.')
           ->assertSuccessful();
 });
+
+it('verifies the manifest file is not overwritten', function () {
+     $this->artisan('init');
+
+     $this->artisan('init')
+          ->expectsOutputToContain('Delete the manifest to generate it again.')
+          ->assertExitCode(2);
+});
