@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Yaml\Yaml;
 
-it('creates the manifest file', function () {
+it('creates the manifest file with default values', function () {
      $manifest = $this->app->make('manifest');
      
      $this->artisan('init');
