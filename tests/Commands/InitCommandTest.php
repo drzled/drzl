@@ -12,7 +12,7 @@ it('creates the manifest file with default values', function () {
      expect(Storage::get($manifest->filename))->toBe(Yaml::dump($manifest->default()));
 });
 
-it('ensures the user is prompted to update the file', function () {
+it('prompts user to update the file', function () {
      $this->artisan('init')
           ->expectsOutputToContain('Update the manifest file with your deployment configuration.')
           ->assertSuccessful();
