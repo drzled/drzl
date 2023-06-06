@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Yaml\Yaml;
 
 it('creates the manifest file', function () {
-     $filename = $this->app->make('manifest')->filename;
+     $manifest = $this->app->make('manifest');
      
-     $this->artisan('init')
-          ->expectsOutputToContain('Manifest file generated successfully.')
-          ->assertSuccessful();
+     $this->artisan('init');
      
-     expect(Storage::exists($filename))->toBeTrue();
+     expect(Storage::exists($manifest->filename))->toBeTrue();
+     expect(Storage::get($manifest->filename))->toBe(Yaml::dump($manifest->default()));
 });
