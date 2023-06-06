@@ -23,6 +23,11 @@ final class Manifest {
         ) ?? [];
     }
 
+    public function primaryServer(): string
+    {
+        return data_get($this->values, 'servers.0', 'localhost');
+    }
+
     public function update(array $values): bool
     {
         $this->values = $values;
