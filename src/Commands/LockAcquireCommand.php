@@ -4,21 +4,14 @@ declare(strict_types=1);
 
 namespace Drzl\Commands;
 
-use Drzl\Manifest;
 use Drzl\Processes\ServerLock;
-use LaravelZero\Framework\Commands\Command;
 
-class LockAcquireCommand extends Command
+class LockAcquireCommand extends BaseCommand
 {
     protected $signature = 'lock:acquire
                             {reason : Helps identify the purpose of the lock}';
 
     protected $description = 'Command description';
-
-    public function __construct(protected readonly Manifest $manifest)
-    {
-        parent::__construct();
-    }
 
     public function handle()
     {

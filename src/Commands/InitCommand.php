@@ -4,19 +4,11 @@ declare(strict_types=1);
 
 namespace Drzl\Commands;
 
-use Drzl\Manifest;
-use Illuminate\Console\Command;
-
-final class InitCommand extends Command
+final class InitCommand extends BaseCommand
 {
     protected $signature = 'init';
 
     protected $description = 'Initializes the manifiest file with default values';
-
-    public function __construct(protected Manifest $manifest)
-    {
-        parent::__construct();
-    }
 
     public function handle(): int
     {

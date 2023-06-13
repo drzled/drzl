@@ -4,20 +4,13 @@ declare(strict_types=1);
 
 namespace Drzl\Commands;
 
-use Drzl\Manifest;
 use Drzl\Processes\ServerLock;
-use LaravelZero\Framework\Commands\Command;
 
-class LockReleaseCommand extends Command
+class LockReleaseCommand extends BaseCommand
 {
     protected $signature = 'lock:release';
 
     protected $description = 'Release an exclusive lock on the remote server';
-
-    public function __construct(public readonly Manifest $manifest)
-    {
-        parent::__construct();
-    }
 
     public function handle(): void
     {
