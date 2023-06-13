@@ -14,6 +14,8 @@ abstract class ProcessBase
     use RunnableOverSSH;
 
     public readonly string $script;
+    
+    protected bool $requiredStream = false;
 
     protected ProcessRunner $runner;
 
@@ -50,6 +52,23 @@ abstract class ProcessBase
 
     public function run(): ProcessResult
     {
-        return $this->runner->__invoke($this);
+        return $this->runner->__invoke(
+            process:$this,
+            stream: $this->requiredStream
+        );
+    }
+
+    public function withOutput(): static
+    {
+        $this->requiredStream = true;
+
+        return $this;
+    }
+
+    public function docker(string $argument): ProcessResult
+    {
+        $this->script = "docker {$argument}";
+
+        return $this->run();
     }
 }
