@@ -23,9 +23,15 @@ final class Manifest {
         ) ?? [];
     }
 
+    function servers(): Collection {
+        return collect(
+            data_get($this->values, 'servers', [])
+        );
+    }
+
     public function primaryServer(): string
     {
-        return data_get($this->values, 'servers.0', 'localhost');
+        return $this->servers()->first(default: 'localhost');
     }
 
     public function update(array $values): bool
