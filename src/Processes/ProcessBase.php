@@ -6,6 +6,7 @@ namespace Drzl\Processes;
 
 use Drzl\Processes\Concerns\RunnableOverSSH;
 use Drzl\ProcessRunner;
+use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Process\ProcessResult;
 use Illuminate\Support\Arr;
 
@@ -15,7 +16,7 @@ abstract class ProcessBase
 
     public readonly string $script;
     
-    protected bool $requiredStream = false;
+    protected ?OutputStyle $output = null;
 
     protected ProcessRunner $runner;
 
@@ -54,13 +55,13 @@ abstract class ProcessBase
     {
         return $this->runner->__invoke(
             process:$this,
-            stream: $this->requiredStream
+            output: $this->output
         );
     }
 
-    public function withOutput(): static
+    public function withOutput(OutputStyle $output): static
     {
-        $this->requiredStream = true;
+        $this->output = $output;
 
         return $this;
     }
