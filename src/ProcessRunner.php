@@ -23,13 +23,15 @@ final class ProcessRunner
     }
 
 
-    public function __invoke($process): ProcessResult
+    public function __invoke($process, bool $stream = false): ProcessResult
     {
         $server = $process->server;
 
-        return Process::run($process->script(), function($type, $message) use ($server) {
-            $this->output->writeln('');
-            $this->output->writeln("<comment>INFO [{$server}] {$message}</comment>");
+        return Process::run($process->script(), function($type, $message) use ($server, $stream) {
+            if ($stream) {
+                $this->output->writeln('');
+                $this->output->writeln("<comment>INFO [{$server}] {$message}</comment>");
+            }
         });        
     }
 }
