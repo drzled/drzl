@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Drzl\Processes;
 
-use Drzl\Processes\Concerns\RunnableOverSSH;
 use Drzl\ProcessRunner;
+use Drzl\Processes\Concerns\RunnableOverSSH;
 use Illuminate\Console\OutputStyle;
 use Illuminate\Contracts\Process\ProcessResult;
 use Illuminate\Support\Arr;
 
-abstract class ProcessBase
+abstract class ProcessBase implements ProcessInterface
 {
     use RunnableOverSSH;
 
