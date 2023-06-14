@@ -13,7 +13,7 @@ class ServerBootstrap extends BaseCommand
     public function handle()
     {
         $this->manifest->servers()->each(function (string $server) {
-             if (Docker::on($server)->isInstalled()->successful()) {
+            if (Docker::on($server)->isInstalled()->successful()) {
                 $this->info("Docker is already installed on {$server}");
                 
                 return;
