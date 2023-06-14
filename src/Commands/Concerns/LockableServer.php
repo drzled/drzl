@@ -12,11 +12,7 @@ trait LockableServer
             'reason' => 'Automatic deploy lock.',
         ]);
 
-        try {
-            $callback();
-        } catch (\Throwable $exception) {
-            $this->error($exception->getMessage());
-        }
+        $callback();
 
         $this->call('lock:release');
     }
