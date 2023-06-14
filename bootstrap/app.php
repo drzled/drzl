@@ -33,7 +33,7 @@ $app->singleton(
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Illuminate\Foundation\Exceptions\Handler::class
+    \Drzl\Exceptions\Handler::class
 );
 
 /*
