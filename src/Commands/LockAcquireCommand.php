@@ -11,7 +11,7 @@ class LockAcquireCommand extends BaseCommand
     protected $signature = 'lock:acquire
                             {reason : Helps identify the purpose of the lock}';
 
-    protected $description = 'Command description';
+    protected $description = 'Obtain an exclusive lock on the remote server';
 
     public function handle()
     {
